@@ -1,0 +1,7 @@
+<h3>Edit comment</h3>
+ <%= simple_form_for [@post, @comment] do |f| %>
+
+        <%= f.input :body %>
+        <%= f.submit "Post comment" %>
+
+    <% end %>

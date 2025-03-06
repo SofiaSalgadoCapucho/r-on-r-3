@@ -1,0 +1,5 @@
+<div id="<%= dom_id(comment) %>">
+  <p><strong><%= comment.user.username %>:</strong> <%= comment.body %></p>
+  <%= link_to 'Edit comment' , edit_post_comment_path(comment.post, comment), class: 'btn btn-outline-info btn-sm' %>
+  <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete, class: 'btn btn-outline-danger btn-sm',  data: { confirm: "Are you sure?" } if comment.user == current_user%>
+</div>
