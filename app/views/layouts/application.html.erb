@@ -10,9 +10,6 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -24,12 +21,8 @@
   <body>
   <%= render 'layouts/navigation/navbar' %>
   <div class="container">
-  <% if user_signed_in? %>
-    <p>Estás autenticado como: <%= current_user.email %></p>
-    <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <p>No estás autenticado.</p>
-  <% end %>
+  <%= bootstrap_flash %>
+  
     <%= yield %>
   </div>
 

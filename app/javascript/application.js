@@ -1,12 +1,20 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 // app/javascript/application.js
-import "../stylesheets/application.scss";
-import "bootstrap"
 import { Turbo } from "@hotwired/turbo-rails"
 import "controllers";
+import * as bootstrap from "bootstrap"
 import "@popperjs/core";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "jquery";
+import "@rails/ujs";
 
-document.addEventListener("turbolinks:load", function() {
-    // Inicializa Bootstrap aquí
+
+document.addEventListener("turbolinks:load", () => {
+  var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+  var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+    return new bootstrap.Dropdown(dropdownToggleEl)
   });
+
+   // Initialize tooltips and popovers
+  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="popover"]').popover()
+});
